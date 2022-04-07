@@ -38,9 +38,10 @@ const Cards = (weatherData) => {
                         <div className="weatherIcon">
                         {weathericons[weatherData.data.futureDays[0][2][2]]}
                         </div>
-                        {console.log("WEATHER DATA =>", weatherData.data)}
                         <Typography variant="body2" color="textSecondary" align = "center">
-                            {weatherData.data.futureDays[0][0][1] === undefined ? console.log("EMPTYYYY") : console.log("FULLL", weatherData.data.futureDays[0][0][1])}
+                            {weatherData.data.futureDays[0][2][2]}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" align = "center">
                             Morning : {weatherData.data.futureDays[0][0][1] === undefined ? <p>No Data</p> : weatherData.data.futureDays[0][0][1] + "°C"}
                         </Typography>
                         <Typography gutterBottom variant="h5" component="h2" align = "center">
@@ -53,7 +54,7 @@ const Cards = (weatherData) => {
                             {weatherData.data.futureDays[0][2][0].toString().substring(0,15)}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" align = "center">
-                            {weatherData.data.futureDays[0][1][2]}
+                            Humidity : {weatherData.data.futureDays[0][2][5] + "%"}
                         </Typography>
                     </CardContent>
                 </Grid>
@@ -63,6 +64,9 @@ const Cards = (weatherData) => {
                         <div className="weatherIcon">
                             {weathericons[weatherData.data.futureDays[1][1][2]]}
                         </div>
+                        <Typography variant="body2" color="textSecondary" align = "center">
+                            {weatherData.data.futureDays[1][1][2]}
+                        </Typography>
                         <Typography gutterBottom variant="h5" component="h2" align = "center">
                             Morning : {weatherData.data.futureDays[1][0][1]+ "°C"}
                         </Typography>
@@ -75,9 +79,8 @@ const Cards = (weatherData) => {
                         <Typography variant="body2" color="textSecondary" align = "center" component="p">
                             {weatherData.data.futureDays[1][1][0].toString().substring(0,15)}
                         </Typography>
-                        
                         <Typography variant="body2" color="textSecondary" align = "center">
-                            {weatherData.data.futureDays[1][1][2]}
+                            Humidity : {weatherData.data.futureDays[1][1][5] + "%"}
                         </Typography>
                     </CardContent>
                 </Grid>
@@ -87,6 +90,9 @@ const Cards = (weatherData) => {
                         <div className="weatherIcon">
                             {weathericons[weatherData.data.futureDays[2][1][2]]}
                         </div>
+                        <Typography variant="body2" color="textSecondary" align = "center">
+                            {weatherData.data.futureDays[2][1][2]}
+                        </Typography>
                         <Typography gutterBottom variant="h5" component="h2" align = "center">
                             Morning : {weatherData.data.futureDays[2][0][1]+ "°C"}
                         </Typography>
@@ -100,9 +106,8 @@ const Cards = (weatherData) => {
                             {weatherData.data.futureDays[2][1][0].toString().substring(0,15)}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" align = "center">
-                            {weatherData.data.futureDays[2][1][2]}
+                            Humidity : {weatherData.data.futureDays[2][1][5] + "%"}
                         </Typography>
-                        
                     </CardContent>
                 </Grid>
 
@@ -111,6 +116,9 @@ const Cards = (weatherData) => {
                         <div className="weatherIcon">
                             {weathericons[weatherData.data.futureDays[3][1][2]]}
                         </div>
+                        <Typography variant="body2" color="textSecondary" align = "center">
+                            {weatherData.data.futureDays[3][1][2]}
+                        </Typography>
                         <Typography gutterBottom variant="h5" component="h2" align = "center">
                             Morning : {weatherData.data.futureDays[3][0][1]+ "°C"}
                         </Typography>
@@ -124,7 +132,7 @@ const Cards = (weatherData) => {
                             {weatherData.data.futureDays[3][1][0].toString().substring(0,15)}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" align = "center">
-                            {weatherData.data.futureDays[3][1][2]}
+                            Humidity : {weatherData.data.futureDays[3][1][5] + "%"}
                         </Typography>
                     </CardContent>
                 </Grid>
@@ -134,6 +142,9 @@ const Cards = (weatherData) => {
                         <div className="weatherIcon">
                             {weathericons[weatherData.data.futureDays[4][1][2]]}
                         </div>
+                        <Typography variant="body2" color="textSecondary" align = "center">
+                            {weatherData.data.futureDays[4][1][2]}
+                        </Typography>
                         <Typography gutterBottom variant="h5" component="h2" align = "center">
                             Morning : {weatherData.data.futureDays[4][0][1]+ "°C"}
                         </Typography>
@@ -147,7 +158,7 @@ const Cards = (weatherData) => {
                             {weatherData.data.futureDays[4][1][0].toString().substring(0,15)}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" align = "center">
-                            {weatherData.data.futureDays[4][1][2]}
+                            Humidity : {weatherData.data.futureDays[4][1][5] + "%"}
                         </Typography>
                         
                     </CardContent>

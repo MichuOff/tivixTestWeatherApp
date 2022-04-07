@@ -21,6 +21,7 @@ export const fetchData = async(city) => {
                 tempMorning.push(list[i].weather[0].main);
                 tempMorning.push(list[i].weather[0].description);
                 tempMorning.push(list[i].weather[0].icon);
+                tempMorning.push(list[i].main.humidity)
             }
             if (list[i].dt_txt.indexOf("12:00:00") !== - 1) {
                 tempDay.push(new Date(list[i].dt_txt));
@@ -28,6 +29,7 @@ export const fetchData = async(city) => {
                 tempDay.push(list[i].weather[0].main);
                 tempDay.push(list[i].weather[0].description);
                 tempDay.push(list[i].weather[0].icon);
+                tempDay.push(list[i].main.humidity)
             }
             if (list[i].dt_txt.indexOf("21:00:00") !== - 1) {
                 var temp = []
@@ -36,6 +38,7 @@ export const fetchData = async(city) => {
                 tempNight.push(list[i].weather[0].main);
                 tempNight.push(list[i].weather[0].description);
                 tempNight.push(list[i].weather[0].icon);
+                tempNight.push(list[i].main.humidity)
                 temp.push(tempMorning)
                 temp.push(tempDay)
                 temp.push(tempNight)
