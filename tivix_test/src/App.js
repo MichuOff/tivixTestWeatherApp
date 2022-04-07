@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {Cards, SearchBar} from './components';
 import styles from './App.css';
-import {fetchData, fetchToday} from './api';
-// import titleImage from './images/apptitle2.png';
+import {fetchData} from './api';
 import {Typography} from '@material-ui/core'
 
 
@@ -13,71 +12,55 @@ class App extends React.Component {
     }
     
     async componentDidMount() {
-        // Fetch initial weather data for 95014
-        const fetchedData = await fetchData("95014");
-        const todayData = await fetchToday("95014");
-       
-        // Add the data for today with the forecast 
-        // as forecast data excludes data for the present day
-        const allData = todayData.concat(fetchedData.futuredays);
+        const fetchedData = await fetchData("London");
+
         const entirety = { 
             cityname: fetchedData.cityname,
-            futuredays: allData
+            futureDays: fetchedData.futureDays,
+            morning : fetchedData.morning,
+            day : fetchedData.day,
+            night : fetchedData.night
         }
 
-        this.setState({data : entirety, cityName : entirety.cityname, zip : "95014", zipError : false});
-        this.cityName = fetchedData.cityname;
-        
+        this.setState({data : entirety, cityName : entirety.cityname, city : "London", cityError : false});
+        this.cityName = fetchedData.cityname;    
     }
 
-    handleZipCodeChange = async(zip) => { 
-        // If zipcode changes, fetch the weather data again
-        const fetchedData = await fetchData(zip);
-        const todayData = await fetchToday(zip);
+    handleCityChange = async(city) => { 
+        const fetchedData = await fetchData(city);
         
-        // If data is undefined
-        if(!todayData || !fetchedData)  {
+        console.log("Fetch DATA =>", fetchedData)
+        if(!fetchedData)  {
             return "Loading ... ";
         }
-
-        // Add the data for today with the forecast 
-        // as forecast data excludes data for the present day
-        const allData = todayData.concat(fetchedData.futuredays);
         const entirety = { 
             cityname: fetchedData.cityname,
-            futuredays: allData
+            futureDays: fetchedData.futureDays,
+            morning : fetchedData.morning,
+            day : fetchedData.day,
+            night : fetchedData.night
         }
-        this.setState({data : entirety, cityName : entirety.cityname, zip : zip, zipError : false});
+        this.setState({data : entirety, cityName : entirety.cityname, cityError : false});
     }
 
-    zipCodeChange = async(change) => { 
-        // Awaits to see if a zipcode entered by the user is valid
-        // const validation = await fetchZipCode(change);
+    CityChange = async(change) => { 
         const validation = "true"
         if(validation != "Error") { 
-            this.handleZipCodeChange(change);
+            this.handleCityChange(change);
         }
         else { 
-            this.zipError = true;
+            this.cityError = true;
         }
-        // if(change == "10027") { 
-        //     this.handleZipCodeChange(change);
-
-        // }
-        // else { 
-        //     this.setState({zipError : true });
-        // }
     }
 
     render() {
-       // Title, search bar, and cards
         return (
             <div classNames = {styles.container}>
                 <Typography className = {styles.typography} gutterBottom variant="h5" component="h2" align = "center">
                     {this.state.cityName} Forecast 
                 </Typography>
                 
-                <SearchBar zipCodeChange = { this.zipCodeChange } error={this.state.zipError}/>
+                <SearchBar CityChange = { this.CityChange } error={this.state.zipError}/>
                
                 <Cards data={this.state.data}/>
             </div>
